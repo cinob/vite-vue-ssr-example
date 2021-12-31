@@ -7,7 +7,8 @@
     "preview": "npx http-server dist/static",
     "build:client": "vite build --ssrManifest --outDir dist/client",
     "build:server": "vite build --ssr src/entry-server.ts --outDir dist/server",
-    "build:ssg": "vite build --ssrManifest --outDir dist/static && npm run build:server && npx ts-node prerender"
+    "build:ssg": "vite build --ssrManifest --outDir dist/static && npm run build:server && npx ts-node prerender",
+    "serve": "cross-env NODE_ENV=production ts-node server"
   },
   "dependencies": {
     "vue": "^3.2.25"
@@ -16,6 +17,7 @@
     "@types/node": "^17.0.5",
     "@vitejs/plugin-vue": "^2.0.0",
     "compression": "^1.7.4",
+    "cross-env": "^7.0.3",
     "eslint": "^8.5.0",
     "express": "^4.17.2",
     "http-server": "^14.0.0",

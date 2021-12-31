@@ -4,6 +4,7 @@ specifiers:
   '@types/node': ^17.0.5
   '@vitejs/plugin-vue': ^2.0.0
   compression: ^1.7.4
+  cross-env: ^7.0.3
   eslint: ^8.5.0
   express: ^4.17.2
   http-server: ^14.0.0
@@ -22,6 +23,7 @@ devDependencies:
   '@types/node': 17.0.5
   '@vitejs/plugin-vue': 2.0.1_vite@2.7.10+vue@3.2.26
   compression: 1.7.4
+  cross-env: 7.0.3
   eslint: 8.5.0
   express: 4.17.2
   http-server: 14.0.0
@@ -640,6 +642,14 @@ packages:
 
   /create-require/1.1.1:
     resolution: {integrity: sha1-wdfo8eX2z8n/ZfnNNS03NIdWwzM=, tarball: create-require/download/create-require-1.1.1.tgz}
+    dev: true
+
+  /cross-env/7.0.3:
+    resolution: {integrity: sha1-hlJkspZ33AFbqEGJGJZd0jL8VM8=, tarball: cross-env/download/cross-env-7.0.3.tgz}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
     dev: true
 
   /cross-spawn/7.0.3:
