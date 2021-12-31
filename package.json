@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
     "preview": "npx http-server dist/static",
     "build:server": "vite build --ssr src/entry-server.ts --outDir dist/server",
     "generate": "vite build --ssrManifest --outDir dist/static && npm run build:server && npx ts-node prerender"
