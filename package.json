@@ -11,10 +11,12 @@
     "serve": "cross-env NODE_ENV=production ts-node server"
   },
   "dependencies": {
-    "vue": "^3.2.25"
+    "vue": "^3.2.25",
+    "vue-router": "4"
   },
   "devDependencies": {
     "@types/node": "^17.0.5",
+    "@typescript-eslint/parser": "^5.8.1",
     "@vitejs/plugin-vue": "^2.0.0",
     "compression": "^1.7.4",
     "cross-env": "^7.0.3",
