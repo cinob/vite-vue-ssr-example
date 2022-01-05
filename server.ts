@@ -1,34 +1,33 @@
-const fs = require('fs')
-const path = require('path')
-const express = require('express')
+import * as fs from 'fs'
+import * as path from 'path'
+import Koa from 'koa'
+import serve from 'koa-static'
+// @ts-ignore
+import { render } from './dist/server/entry-server.js'
 
 async function createServer () {
   const resolve = (p: string) => path.resolve(__dirname, p)
 
-  const indexProd = fs.readFileSync(resolve('dist/client/index.html'), 'utf-8')
+  const template = fs.readFileSync(resolve('dist/client/index.html'), 'utf-8')
   const manifest = fs.readFileSync(resolve('dist/client/ssr-manifest.json'))
 
-  const app = new express()
+  const app = new Koa()
 
-  app.use(require('compression')())
-  app.use(
-    require('serve-static')(resolve('dist/client'), {
-      index: false
-    })
-  )
+  app.use(serve('dist/client', {
+    // 防止 / 被解析为静态文件
+    index: false
+  }))
 
-  app.use('*', async (req: any, res: any) => {
-    // const url = req.originalUrl
-    let template, render
-    template = indexProd
-    render = require('./dist/server/entry-server.js').render
+  app.use(async (ctx) => {
+    const url = ctx.request.url
 
-    const [appHtml, preloadLinks] = await render( manifest)
+    const [appHtml, preloadLinks] = await render(url, manifest)
     const html = template
       .replace(`<!--preload-links-->`, preloadLinks)
       .replace(`<!--app-html-->`, appHtml)
 
-    res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
+    ctx.set('Content-Type', 'text/html')
+    ctx.body = html
   })
   return { app }
 }

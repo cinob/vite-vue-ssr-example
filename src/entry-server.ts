@@ -1,8 +1,11 @@
 import { createApp } from './main'
 import { renderToString } from 'vue/server-renderer'
 
-export async function render(manifest: any) {
-  const { app } = createApp()
+export async function render(url: string, manifest: any) {
+  const { app, router } = createApp()
+
+  router.push(url)
+  await router.isReady()
 
   const ctx = {} as any
   const html = await renderToString(app, ctx)
