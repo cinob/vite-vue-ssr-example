@@ -1,13 +1,22 @@
+<script lang="ts">
+export default {
+  asyncData ({ store, route }: { store: any, route: RouteLocationNormalized }) {
+    const ssrStore = useTestStore(store)
+    return ssrStore.featchItem(route.fullPath)
+  }
+}
+</script>
 <script setup lang="ts">
 import HelloWorld from '@/components/HelloWorld.vue'
-import { ref } from 'vue'
-const list = ref([] as any[])
+import { RouteLocationNormalized, useRoute } from 'vue-router'
+import { useTestStore } from '@/stores/test'
+import { computed } from 'vue'
 
-function asyncData ({ store, route }) {
+const route = useRoute()
+const ssrStore = useTestStore()
 
-}
-defineExpose({
-  asyncData
+const list = computed(() => {
+  return ssrStore.items[route.fullPath]
 })
 </script>
 

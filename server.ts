@@ -4,8 +4,6 @@ import Koa from 'koa'
 import serve from 'koa-static'
 import c2k from 'koa-connect'
 import { createServer as _createServer, ViteDevServer } from 'vite'
-// @ts-ignore
-// import { render } from './dist/server/entry-server.js'
 
 async function createServer (
   root = process.cwd(),
@@ -46,6 +44,7 @@ async function createServer (
     }))
   }
 
+  // mock
   app.use(async (ctx, next) => {
     const url = ctx.request.url
     if (url.startsWith('/api')) {
@@ -77,10 +76,12 @@ async function createServer (
         template = indexProd
         render = require('./dist/server/entry-server.js').render
       }
-      const [appHtml, preloadLinks] = await render(url, manifest)
+      const [appHtml, preloadLinks, store] = await render(url, manifest)
+
       const html = template
         .replace(`<!--preload-links-->`, preloadLinks)
         .replace(`<!--app-html-->`, appHtml)
+        .replace('/*sync-state*/', `window.__SSR_STATE__='${JSON.stringify(store.state.value)}'`)
 
       ctx.set('Content-Type', 'text/html')
       ctx.body = html
@@ -95,7 +96,7 @@ async function createServer (
 }
 
 createServer().then(({ app }) =>
-    app.listen(3000, () => {
-      console.log('http://localhost:3000')
-    })
-  )
+  app.listen(3000, () => {
+    console.log('http://localhost:3000')
+  })
+)

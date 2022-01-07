@@ -1,16 +1,16 @@
 import { defineStore } from 'pinia'
 import { getList } from '@/apis/test'
 
-export const useSsrStore = defineStore('ssr', {
+export const useTestStore = defineStore('test', {
   state: () => {
     return {
-      items: []
+      items: {} as any
     }
   },
   actions: {
-    async featchItem () {
+    async featchItem (id: string) {
       const { data } = await getList()
-      this.items = data
+      this.items[id] = data
     }
   }
 })
