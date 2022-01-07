@@ -2,18 +2,32 @@ import { createApp } from './main'
 import { renderToString } from 'vue/server-renderer'
 
 export async function render(url: string, manifest: any) {
-  const { app, router } = createApp()
-
+  const { app, router, store } = createApp()
+  
   router.push(url)
   await router.isReady()
+  
+  const matchedComponents = router.currentRoute.value.matched
+
+  await Promise.all(matchedComponents.map(item => {
+    // @ts-ignore
+    if (item.components.default.asyncData) {
+      // @ts-ignore
+      return item.components.default.asyncData({
+        store,
+        route: router.currentRoute.value
+      })
+    }
+  }))
 
   const ctx = {} as any
+
   const html = await renderToString(app, ctx)
 
   // 通过manifest找到所有需要预加载的链接
   const preloadLinks = renderPreloadLinks(ctx.modules, manifest)
 
-  return [html, preloadLinks]
+  return [html, preloadLinks, store]
 }
 
 function renderPreloadLinks(modules: Set<string>, manifest: any) {
