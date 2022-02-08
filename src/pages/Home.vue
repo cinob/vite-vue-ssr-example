@@ -1,8 +1,8 @@
 <script lang="ts">
 export default {
   asyncData ({ store, route }: { store: any, route: RouteLocationNormalized }) {
-    const ssrStore = useTestStore(store)
-    return ssrStore.featchItem(route.fullPath)
+    const testStore = useTestStore(store)
+    return testStore.featchItem(route.fullPath)
   }
 }
 </script>
@@ -10,19 +10,18 @@ export default {
 import HelloWorld from '@/components/HelloWorld.vue'
 import { RouteLocationNormalized, useRoute } from 'vue-router'
 import { useTestStore } from '@/stores/test'
-import { computed } from 'vue'
+import { ref } from 'vue'
 
 const route = useRoute()
-const ssrStore = useTestStore()
+const testStore = useTestStore()
 
-const list = computed(() => {
-  return ssrStore.items[route.fullPath]
-})
+const list = ref(testStore.items[route.fullPath])
 </script>
 
 <template>
   <img alt="Vue logo" src="../assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite + SSR" />
+  <h3>Async Data List</h3>
   <ul>
     <li v-for="(item, index) in list" :key="index">
       {{ item.name }} - {{ item.age }}

@@ -8,12 +8,13 @@
     "build:client": "vite build --ssrManifest --outDir dist/client",
     "build:server": "vite build --ssr src/entry-server.ts --outDir dist/server",
     "build:ssg": "vite build --ssrManifest --outDir dist/static && npm run build:server && npx ts-node prerender",
-    "serve": "cross-env NODE_ENV=production ts-node server"
+    "server": "cross-env NODE_ENV=production ts-node server"
   },
   "dependencies": {
     "@vueuse/head": "^0.7.4",
     "axios": "^0.24.0",
     "pinia": "^2.0.9",
+    "vant": "3",
     "vue": "^3.2.25",
     "vue-router": "4"
   },

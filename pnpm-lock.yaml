@@ -17,6 +17,7 @@ specifiers:
   standard: ^16.0.4
   ts-node: ^10.4.0
   typescript: ^4.4.4
+  vant: '3'
   vite: ^2.7.2
   vue: ^3.2.25
   vue-router: '4'
@@ -26,6 +27,7 @@ dependencies:
   '@vueuse/head': 0.7.4_vue@3.2.26
   axios: 0.24.0
   pinia: 2.0.9_typescript@4.5.4+vue@3.2.26
+  vant: 3.4.4_vue@3.2.26
   vue: 3.2.26
   vue-router: 4.0.12_vue@3.2.26
 
@@ -180,6 +182,10 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
     dev: true
+
+  /@popperjs/core/2.11.2:
+    resolution: {integrity: sha512-92FRmppjjqz29VMJ2dn+xdyXZBrMlE42AV6Kq6BwjWV7CNUW1hs2FtxSNLQE+gJhaZ6AAmYuO9y8dshhcBl7vA==}
+    dev: false
 
   /@tsconfig/node10/1.0.8:
     resolution: {integrity: sha1-weToDW+WT77LM1nEO9SLQPfK2tk=, tarball: '@tsconfig/node10/download/@tsconfig/node10-1.0.8.tgz'}
@@ -378,6 +384,20 @@ packages:
       '@typescript-eslint/types': 5.9.0
       eslint-visitor-keys: 3.1.0
     dev: true
+
+  /@vant/icons/1.7.3:
+    resolution: {integrity: sha512-tW4EqzxN4kXw1rnlnQJQHofEifPbt/gECOWiibomht8QLyvoGuE4iUmDFS288dJ07ZjuTy0bhdABj0SENo2fmQ==}
+    dev: false
+
+  /@vant/popperjs/1.1.0:
+    resolution: {integrity: sha512-8MD1gz146awV/uPxYjz4pet22f7a9YVKqk7T+gFkWFwT9mEcrIUEg/xPrdOnWKLP9puXyYtm7oVfSDSefZ/p/w==}
+    dependencies:
+      '@popperjs/core': 2.11.2
+    dev: false
+
+  /@vant/use/1.3.5:
+    resolution: {integrity: sha512-S4rfMQT+71quUbSY9sF7vJTEADVWqHxn8zUbpEl4vzI2CCJx67ri/ZHV911LpXIaZVgSSGPLE5xLV8javmbU0Q==}
+    dev: false
 
   /@vitejs/plugin-vue/2.0.1_vite@2.7.10+vue@3.2.26:
     resolution: {integrity: sha512-wtdMnGVvys9K8tg+DxowU1ytTrdVveXr3LzdhaKakysgGXyrsfaeds2cDywtvujEASjWOwWL/OgWM+qoeM8Plg==, tarball: '@vitejs/plugin-vue/download/@vitejs/plugin-vue-2.0.1.tgz'}
@@ -1640,7 +1660,7 @@ packages:
     dev: true
 
   /fsevents/2.3.2:
-    resolution: {integrity: sha1-ilJveLj99GI7cJ4Ll1xSwkwC/Ro=, tarball: fsevents/download/fsevents-2.3.2.tgz}
+    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
@@ -3213,6 +3233,17 @@ packages:
       spdx-correct: 3.1.1
       spdx-expression-parse: 3.0.1
     dev: true
+
+  /vant/3.4.4_vue@3.2.26:
+    resolution: {integrity: sha512-S6mf11uCad9jxCpgfO1IhGfJ7EDedcxanR8Ye1qihs3zaLlyuLLyazXi50wZDeRVzXCXIIBdBlsPkbOKajP6iw==}
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      '@vant/icons': 1.7.3
+      '@vant/popperjs': 1.1.0
+      '@vant/use': 1.3.5
+      vue: 3.2.26
+    dev: false
 
   /vary/1.1.2:
     resolution: {integrity: sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=, tarball: vary/download/vary-1.1.2.tgz}
