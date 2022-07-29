@@ -79,7 +79,7 @@ async function createServer(
       else {
         template = indexProd
         // @ts-expect-error type
-        render = import('./dist/server/entry-server.js').render
+        render = (await import('./dist/server/entry-server.js')).render
       }
       const [appHtml, preloadLinks, store] = await render(url, manifest)
 
