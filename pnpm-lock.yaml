@@ -16,6 +16,7 @@ specifiers:
   koa-connect: ^2.1.0
   koa-static: ^5.0.0
   pinia: ^2.0.17
+  pnpm: 7.4.0
   typescript: ^4.7.4
   vant: ^3.5.2
   vite: ^2.7.2
@@ -43,6 +44,7 @@ devDependencies:
   koa: 2.13.4
   koa-connect: 2.1.0
   koa-static: 5.0.0
+  pnpm: 7.4.0
   typescript: 4.7.4
   vite: 2.9.14
 
@@ -2890,6 +2892,12 @@ packages:
   /pluralize/8.0.0:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
     engines: {node: '>=4'}
+    dev: true
+
+  /pnpm/7.4.0:
+    resolution: {integrity: sha512-mlV8dw6b9Ta+u+zhJeBDvf4Io+g9Vg8esCxdfUcVhai00wzrLaAJ7TNE67dzHHukkQZ3nuHmdWqQxvtkrBa5Ig==}
+    engines: {node: '>=14.6'}
+    hasBin: true
     dev: true
 
   /portfinder/1.0.28:
