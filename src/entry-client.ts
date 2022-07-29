@@ -1,9 +1,9 @@
 import { createApp } from './main'
 const { app, router, store } = createApp()
 
-// @ts-ignore
+// @ts-expect-error type
 if (window.__SSR_STATE__) {
-  // @ts-ignore
+  // @ts-expect-error type
   store.state.value = JSON.parse(window.__SSR_STATE__)
 }
 router.isReady().then(() => {
@@ -13,12 +13,13 @@ router.isReady().then(() => {
       return diffed || (diffed = (from.matched[i] !== c))
     })
 
-    if (!activated.length) return false
+    if (!activated.length)
+      return false
 
-    await Promise.all(activated.map(c => {
-      // @ts-ignore
+    await Promise.all(activated.map((c) => {
+      // @ts-expect-error type
       if (c.components.default.asyncData) {
-        // @ts-ignore
+        // @ts-expect-error type
         return c.components.default.asyncData({ store, route: to })
       }
       return true

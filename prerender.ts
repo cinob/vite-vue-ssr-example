@@ -1,9 +1,8 @@
 import * as fs from 'fs'
 import * as path from 'path'
-
-// @ts-ignore
+// @ts-expect-error type
 import manifest from './dist/static/ssr-manifest.json'
-// @ts-ignore
+// @ts-expect-error type
 import { render } from './dist/server/entry-server.js'
 
 const toAbsolutePath = (p: string) => path.resolve(__dirname, p)
@@ -13,19 +12,20 @@ const routesToPrerender = fs
   .readdirSync(toAbsolutePath('src/pages'))
   .map((file) => {
     const name = file.replace(/\.vue$/, '').toLowerCase()
-    return name === 'home' ? `/` : `/${name}`
+    return name === 'home' ? '/' : `/${name}`
   })
 
 ;(async () => {
   for (const url of routesToPrerender) {
     const [appHtml, preloadLinks] = await render(url, manifest)
     const html = template
-    .replace(`<!--preload-links-->`, preloadLinks)
-    .replace(`<!--app-html-->`, appHtml)
-    
+      .replace('<!--preload-links-->', preloadLinks)
+      .replace('<!--app-html-->', appHtml)
+
     const filePath = `dist/static${url === '/' ? '/index' : url}.html`
     fs.writeFileSync(toAbsolutePath(filePath), html)
-    
+
+    // eslint-disable-next-line no-console
     console.log('pre-rendered:', filePath)
   }
 
