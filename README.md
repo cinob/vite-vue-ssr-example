@@ -1,7 +1,5 @@
 # Vue 3 + Typescript + Vite + Pinia + SSR
 
-🖥 [Online Preview](https://stackblitz.com/github/cinob/vite-vue-ssr-example)
-
 [Vue SSR 指南](https://ssr.vuejs.org/zh/)
 
 [Vite SSR](https://cn.vitejs.dev/guide/ssr.html)

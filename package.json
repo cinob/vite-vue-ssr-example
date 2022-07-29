@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "packageManager": "pnpm@7.4.0",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "dev": "node -r @swc-node/register server",
     "build": "npm run build:client && npm run build:server",
     "preview": "npx http-server dist/static",
