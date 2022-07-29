@@ -1,5 +1,7 @@
 # Vue 3 + Typescript + Vite + Pinia + SSR
 
+🖥 [Online Preview](https://stackblitz.com/github/cinob/vite-vue-ssr-example)
+
 [Vue SSR 指南](https://ssr.vuejs.org/zh/)
 
 [Vite SSR](https://cn.vitejs.dev/guide/ssr.html)
@@ -11,27 +13,18 @@
 ## 开发
 
 ```
-// npm
-npm run dev
-// yarn
-yarn dev
+pnpm run dev
 ```
 
 ## 打包
 
 ```
-// npm
-npm run build
-// yarn
-yarn build
+pnpm run build
 ```
 
 ## 启动服务
 
 ```
-// npm
-npm run server
-// yarn
-yarn server
+pnpm run server
 ```
 
